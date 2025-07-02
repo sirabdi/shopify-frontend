@@ -1,13 +1,8 @@
-import { Metadata } from 'next';
-import Homepage from '@/component/view/home';
+import getMe from "./get-me";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return {
-    title: `Home Page`,
-    description: `Home Page Decription`,
-  };
-};
+export default async function Home() {
+  const me = await getMe();
+  console.log(me);
 
-export default function Home() {
-  return <Homepage />;
+  return <></>;
 }
