@@ -12,5 +12,5 @@ export default async function createUser(
   if (error) {
     return { error };
   }
-  redirect("/");
+  redirect("/auth/login");
 }

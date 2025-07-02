@@ -1,3 +1,3 @@
 export interface FormError {
-  error: string;
+  error?: string;
 }
