@@ -3,13 +3,15 @@
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { FormError } from "@/app/common/interface/form-error.interface";
 import { API_URL } from "@/app/common/constants/api";
 import { getErrorMessage } from "@/app/common/util/errors";
 import { AUTH_COOKIES } from "../auth-cookies";
+import { FormResponse } from "@/app/common/interface/form-response.interface";
 
-export default async function login(_prevState: FormError, formData: FormData) {
-  console.log("formData ", formData);
+export default async function login(
+  _prevState: FormResponse,
+  formData: FormData
+) {
   const res = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
