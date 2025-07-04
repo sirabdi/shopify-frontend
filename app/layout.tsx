@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
+import "./globals.css";
 import { Container, CssBaseline } from "@mui/material";
 
 import Header from "./header/header";
@@ -8,15 +9,7 @@ import Providers from "./provider";
 import authenticated from "./auth/authenticated";
 import logout from "./auth/logout";
 
-import "./globals.css";
-
-import { Quicksand } from "next/font/google";
-
-const quicksand = Quicksand({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={quicksand.className}>
+      <body className={inter.className}>
         <Providers authenticated={isAuthenticated}>
           <CssBaseline />
           <Header logout={logout} />
