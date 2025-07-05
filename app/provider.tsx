@@ -12,8 +12,6 @@ interface ProviderProps {
 }
 
 export default function Providers({ children, authenticated }: ProviderProps) {
-  console.log("authenticated ", authenticated);
-
   return (
     <AppRouterCacheProvider>
       <ThemeProvider theme={darkTheme}>

@@ -1,9 +1,17 @@
 "use client";
 
-import { Box, Button, Modal, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { CSSProperties, useState } from "react";
 import { FormResponse } from "../../common/interface/form-response.interface";
 import createProduct from "../actions/create-product";
+import { CloudUploadOutlined } from "@mui/icons-material";
 
 interface CreateProductModalProps {
   open: boolean;
@@ -27,10 +35,24 @@ export default function CreateProductModal({
     pb: 3,
   };
 
+  const fileInputStyles: CSSProperties = {
+    clip: "react(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  };
+
   const [response, setResponse] = useState<FormResponse>();
+  const [fileName, setfileName] = useState<string>("");
 
   const onClose = () => {
     setResponse(undefined);
+    setfileName("");
     handleClose();
   };
 
@@ -76,6 +98,22 @@ export default function CreateProductModal({
                 helperText={response?.error}
                 error={!!response?.error}
               />
+              <Button
+                component="label"
+                variant="outlined"
+                startIcon={<CloudUploadOutlined />}
+              >
+                Upload File
+                <input
+                  type="file"
+                  name="image"
+                  style={fileInputStyles}
+                  onChange={(e) =>
+                    e.target.files && setfileName(e.target.files[0].name)
+                  }
+                ></input>
+              </Button>
+              {fileName && <Typography>{fileName}</Typography>}
               <Button type="submit" variant="contained">
                 Confirm
               </Button>

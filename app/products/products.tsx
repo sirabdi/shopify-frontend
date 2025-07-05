@@ -6,7 +6,7 @@ export default async function Products() {
   const products = await getProducts();
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} sx={{ height: "85vh", overflow: "scroll" }}>
       {products.map((product) => (
         <Grid key={product.id} item sm={6} lg={4} xs={12} display="flex">
           <Product product={product} />
