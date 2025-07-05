@@ -10,7 +10,7 @@ interface ProductProps {
   product: IProduct;
 }
 
-export default async function Product({ product }: ProductProps) {
+export default function Product({ product }: ProductProps) {
   const router = useRouter();
 
   return (
