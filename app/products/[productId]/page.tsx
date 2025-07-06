@@ -2,6 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import getProduct from "./get-product";
 import Image from "next/image";
 import { getProductImage } from "../product-image";
+import Checkout from "@/app/checkout/checkout";
 
 interface SingleProductProps {
   params: { productId: string };
@@ -25,6 +26,8 @@ export default async function SingleProduct({ params }: SingleProductProps) {
       )}
       <Typography>{detailProduct.description}</Typography>
       <Typography variant="h4">{detailProduct.price}</Typography>
+
+      <Checkout productId={detailProduct.id} />
     </Stack>
   );
 }
